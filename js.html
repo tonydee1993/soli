@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.js"></script>
+    <script>
+        $(function () {
+            var br = $(window).width();
+//            alert("浏览器宽度："+br);
+            var f = br - 200 - 20;
+//            alert("content理论宽度："+f);
+            $("#content").css("width",f);
+            var p = $("#content").css("width");
+//            alert("content实际宽度："+p);
+
+            $("#btn1").click(function () {
+                if($("#left-nav").css("width") == "200px"){
+//                    alert("左导航200");
+                    $("#left-nav").css("width","54px");
+                    var a = $("#left-nav").width();
+//                    alert(typeof br);
+//                    alert(typeof a);
+//                    var aa = a;
+//                    alert("content理论宽度："+aa);
+//                    $("#content").css("width",aa);
+                    $("#content").css("width","").css("margin-left",a);
+//                    var yy =$("#content").css("width");
+//                    alert("content实际宽度："+yy);
+                    $("#btn1").val("放大");
+                    }else{
+//                    alert("左导航54");
+                    $("#left-nav").css("width","200px");
+                    var b = $("#left-nav").width();
+//                    var bb = br-b-20;
+//                    alert("content理论宽度："+bb);
+                    $("#content").css("width","").css("margin-left",b);
+//                    var zz =$("#content").css("width");
+//                    alert("content实际宽度："+zz);
+                    $("#btn1").val("缩小");
+                    }
+            })
+        })
+    </script>
+    <style>
+        #left-nav{
+            background: yellow;
+            width: 200px;
+            height: 1000px;
+            float: left;
+        }
+        #content{
+            background: green;
+            height: 1000px;
+            font-size: 100px;
+            word-wrap:break-word;
+            margin-left: 200px;
+        }
+        #btn1{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="btn1" value="缩小"/>
+<div id="left-nav"></div>
+<div id="content"></div>
+</body>
+</html>

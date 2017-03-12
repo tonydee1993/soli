@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>爱心天气预报</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(function () {
+//                var cityname = $("#inp").val();
+                $("#btn").click(function () {
+                    var cityname = $("#inp").val();
+                    $("#city span").html(cityname);
+                    console.log(cityname);
+                    $.getJSON("http://wthrcdn.etouch.cn/weather_mini?city="+cityname,function (result) {
+                        console.log(result);
+
+                        var
+                                temp = result.data.wendu,
+                                aqi = result.data.aqi;
+
+                        var
+                                low=[],
+                                high=[],
+                                windforce=[],
+                                winddir=[],
+                                type=[],
+                                truetype=[];
+
+                        for(var i = 0;i<5;i++){
+                            low[i] = result.data.forecast[i].low;
+                            high[i] = result.data.forecast[i].high;
+                            windforce[i] = result.data.forecast[i].fengli;
+                            winddir[i] = result.data.forecast[i].fengxiang;
+                            type[i] = result.data.forecast[i].type;
+                            if(type[i] == "晴"){
+                                truetype[i] = "./3d_180/0.png";
+                            }else if(type[i] == "阴"){
+                                truetype[i] = "./3d_180/9.png";
+                            }else if(type[i] == "多云"){
+                                truetype[i] = "./3d_180/7.png";
+                            }else if(type[i] == "小雨"){
+                                truetype[i] = "./3d_180/10.png";
+                            }else if(type[i] == "中雨"){
+                                truetype[i] = "./3d_180/11.png";
+                            }else if(type[i] == "大雨"){
+                                truetype[i] = "./3d_180/14.png";
+                            }else if(type[i] == "雷阵雨"){
+                                truetype[i] = "./3d_180/16.png";
+                            }else if(type[i] == "雨夹雪"){
+                                truetype[i] = "./3d_180/20.png";
+                            }
+                            low[i] = low[i].slice(3);
+                            high[i] = high[i].slice(3);
+                        }
+                        if(type){
+
+                        }
+
+
+                        $("#low0").html(low[0]);
+                        $("#high0").html(high[0]);
+                        $("#wind").html(winddir[0]+","+windforce[0]);
+                        $("#temp").html("当前温度:"+temp+"℃");
+                        $("#weather img").attr("src",truetype[0]);
+                        $("#aqi").html("当前空气质量:"+aqi);
+                        $("#day1 .low").html(low[1]);
+                        $("#day1 .high").html(high[1]);
+                        $("#day1 img").attr("src",truetype[1]);
+                        $("#day2 .low").html(low[2]);
+                        $("#day2 .high").html(high[2]);
+                        $("#day2 img").attr("src",truetype[2]);
+                        $("#day3 .low").html(low[3]);
+                        $("#day3 .high").html(high[3]);
+                        $("#day3 img").attr("src",truetype[3]);
+                        $("#day4 .low").html(low[4]);
+                        $("#day4 .high").html(high[4]);
+                        $("#day4 img").attr("src",truetype[4]);
+
+                    })
+                });
+                $.getJSON("http://wthrcdn.etouch.cn/weather_mini?city=杭州",function (result) {
+                    console.log(result);
+
+                    var
+                            temp = result.data.wendu,
+                            aqi = result.data.aqi;
+
+                    var
+                            low=[],
+                            high=[],
+                            windforce=[],
+                            winddir=[],
+                            type=[],
+                            truetype=[];
+
+                    for(var i = 0;i<5;i++){
+                        low[i] = result.data.forecast[i].low;
+                        high[i] = result.data.forecast[i].high;
+                        windforce[i] = result.data.forecast[i].fengli;
+                        winddir[i] = result.data.forecast[i].fengxiang;
+                        type[i] = result.data.forecast[i].type;
+                        if(type[i] == "晴"){
+                            truetype[i] = "./3d_180/0.png";
+                        }else if(type[i] == "阴"){
+                            truetype[i] = "./3d_180/9.png";
+                        }else if(type[i] == "多云"){
+                            truetype[i] = "./3d_180/7.png";
+                        }else if(type[i] == "小雨"){
+                            truetype[i] = "./3d_180/10.png";
+                        }else if(type[i] == "中雨"){
+                            truetype[i] = "./3d_180/11.png";
+                        }else if(type[i] == "大雨"){
+                            truetype[i] = "./3d_180/14.png";
+                        }else if(type[i] == "雷阵雨"){
+                            truetype[i] = "./3d_180/16.png";
+                        }else if(type[i] == "雨夹雪"){
+                            truetype[i] = "./3d_180/20.png";
+                        }
+                        low[i] = low[i].slice(3);
+                        high[i] = high[i].slice(3);
+                    }
+                    if(type){
+
+                    }
+
+
+                    $("#low0").html(low[0]);
+                    $("#high0").html(high[0]);
+                    $("#wind").html(winddir[0]+","+windforce[0]);
+                    $("#temp").html("当前温度:"+temp+"℃");
+                    $("#weather img").attr("src",truetype[0]);
+                    $("#aqi").html("当前空气质量:"+aqi);
+                    $("#day1 .low").html(low[1]);
+                    $("#day1 .high").html(high[1]);
+                    $("#day1 img").attr("src",truetype[1]);
+                    $("#day2 .low").html(low[2]);
+                    $("#day2 .high").html(high[2]);
+                    $("#day2 img").attr("src",truetype[2]);
+                    $("#day3 .low").html(low[3]);
+                    $("#day3 .high").html(high[3]);
+                    $("#day3 img").attr("src",truetype[3]);
+                    $("#day4 .low").html(low[4]);
+                    $("#day4 .high").html(high[4]);
+                    $("#day4 img").attr("src",truetype[4]);
+
+                })
+        });
+    </script>
+    <style>
+        body{
+            margin:0;
+        }
+        #inp{
+            height: 20px;
+            margin: 0;
+        }
+        #btn{
+            height:20px;
+            border: none;
+            background: green;
+            color: white;
+        }
+        #main{
+            width: 700px;
+            height: 1000px;
+            background: gray;
+            margin: 50px auto;
+        }
+        #up{
+            width: 700px;
+            height: 600px;
+            background: cadetblue;
+        }
+        #city{
+            height: 40px;
+            width: 700px;
+            color: black;
+            font-size: 36px;
+            text-align: center;
+            background: navajowhite;
+        }
+        #low0,#weather,#high0{
+            float: left;
+        }
+        #low0{
+            height: 520px;
+            width: 200px;
+            background: yellowgreen;
+            font-size: 80px;
+            line-height: 520px;
+            text-align: center;
+        }
+        #weather{
+            height: 520px;
+            width: 300px;
+            background: indianred;
+        }
+        #weather img{
+            margin: 85px 60px 100px 60px;
+        }
+        #weather p{
+            width: 300px;
+            text-align: center;
+            font-size: 30px;
+            margin: 20px auto;
+        }
+        #high0{
+            height: 520px;
+            width: 200px;
+            background: yellowgreen;
+            font-size: 80px;
+            line-height: 520px;
+            text-align: center;
+        }
+        #aqi{
+            color: white;
+            font-size: 36px;
+            text-align: center;
+        }
+        #down{
+            width: 700px;
+            height: 400px;
+            background: salmon;
+        }
+        #day1,#day2,#day3,#day4{
+            float: left;
+            width: 175px;
+            height: 400px;
+        }
+        #day1{
+            background: khaki;
+        }
+        #day2{
+            background: palegreen;
+        }
+        #day3{
+            background: snow;
+        }
+        #day4{
+            background: tomato;
+        }
+        .title{
+            height: 50px;
+            color: black;
+            font-size: 40px;
+            line-height: 50px;
+            text-align: center;
+        }
+        .low,.high{
+            height: 85px;
+            color: black;
+            font-size: 55px;
+            line-height: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="up">
+            <div id="city"><span>杭州</span><input id="inp" type="text" placeholder="输入城市名称"><button id="btn">切换城市</button> </div>
+            <div id="low0">0</div>
+            <div id="weather"><p id="wind">东北风三到四级</p><img src="3d_180/0.png" alt="logo"><p id="temp">当前温度:3</p></div>
+            <div id="high0">8</div>
+            <div id="aqi">空气质量666</div>
+        </div>
+        <div id="down">
+            <div id="day1">
+                <div class="title">明天</div>
+                <div class="low">
+                    0
+                </div>
+                <div class="wea"><img src="3d_180/1.png" alt=""></div>
+                <div class="high">8</div>
+            </div>
+            <div id="day2">
+                <div class="title">后天</div>
+                <div class="low">
+                    0
+                </div>
+                <div class="wea"><img src="3d_180/1.png" alt=""></div>
+                <div class="high">8</div>
+            </div>
+            <div id="day3">
+                <div class="title">大后天</div>
+                <div class="low">
+                    0
+                </div>
+                <div class="wea"><img src="3d_180/1.png" alt=""></div>
+                <div class="high">8</div>
+            </div>
+            <div id="day4">
+                <div class="title">大大后天</div>
+                <div class="low">
+                    0
+                </div>
+                <div class="wea"><img src="3d_180/1.png" alt=""></div>
+                <div class="high">8</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

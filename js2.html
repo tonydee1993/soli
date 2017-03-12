@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.js"></script>
+    <script>
+        $(function () {
+            $("#btn1").click(function () {
+                if($("#left-nav").css("width") == "200px"){
+                    $("#left-nav").css("width","54px");
+                    var a = $("#left-nav").width();
+                    $("#content").css("width","").css("margin-left",a);
+                    $("#btn1").val("放大");
+                }else{
+                    $("#left-nav").css("width","200px");
+                    var b = $("#left-nav").width();
+                    $("#content").css("width","").css("margin-left",b);
+                    $("#btn1").val("缩小");
+                }
+            })
+        })
+    </script>
+    <style>
+        #left-nav{
+            background: yellow;
+            width: 200px;
+            height: 1000px;
+            float: left;
+            font-size: 100px;
+            word-wrap:break-word;
+        }
+        #content{
+            background: green;
+            height: 1000px;
+            font-size: 100px;
+            word-wrap:break-word;
+            margin-left: 200px;
+        }
+        #btn1{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="btn1" value="缩小"/>
+<div id="left-nav">111111</div>
+<div id="content">22222222222222222222222222222222222222222222222222222222222</div>
+</body>
+</html>
